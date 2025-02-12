@@ -25,7 +25,7 @@ void draw() {
     if(isReady) {
       game.removeLine(y);
       System.out.println("Is ready to be removed");
-      game.isOne(y);
+      move(y - 1);
     }
     else    
       System.out.println("Is not ready yet");
@@ -46,5 +46,9 @@ void keyPressed() {
   }
 }
 
-void move() {
+void move(int y) {
+  while (game.isOne(y)){
+    game.removeLine(y);
+    y--;
+  }
 }
