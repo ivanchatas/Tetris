@@ -31,10 +31,32 @@ public class Game {
   
   public boolean isReady(int y) {
     // Insert here the code
-    return false;
+    boolean result = true;
+    for(int x = 0; x < Wide; x++) {
+      if(Board[x][y] == 0) {
+        result = false;
+        break;
+      }
+    }
+    return result;
   }
   
-  public void remove(int y) {
+  public void removeLine(int y) {
     // Insert here the code
-  } 
+    for(int x = 0; x < Wide; x++) {
+      Board[x][y] = Board[x][y-1]; 
+    }
+  }
+  
+  public boolean isOne(int y) {
+    // Insert here the code
+    boolean result = false;
+    for(int x = 0; x < Wide; x++) {
+      if(Board[x][y] == 1) {
+        result = true;
+        break;
+      }
+    }
+    return result;
+  }
 }

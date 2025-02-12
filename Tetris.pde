@@ -13,7 +13,7 @@ void setup() {
 }
 
 void draw() {
-  delay(1000);
+  delay(100);
   game.displayBoard();
   fill(204, 102, 0);
   rect(x * sizeCell, y * sizeCell, sizeCell, sizeCell);
@@ -21,6 +21,14 @@ void draw() {
     y++;
   else {
     game.Board[x][y] = 1;
+    boolean isReady = game.isReady(y);
+    if(isReady) {
+      game.removeLine(y);
+      System.out.println("Is ready to be removed");
+      game.isOne(y);
+    }
+    else    
+      System.out.println("Is not ready yet");
     x = wide / 2;
     y = 0;
   }
@@ -36,4 +44,7 @@ void keyPressed() {
         x++;
     } 
   }
+}
+
+void move() {
 }
