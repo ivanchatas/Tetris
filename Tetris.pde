@@ -2,7 +2,7 @@ int wide = 10;
 int high = 24;
 int sizeCell = 15;
 Game game;
-
+IShape ishape;
 int x = wide / 2;
 int y = 0;
 
@@ -10,15 +10,20 @@ void setup() {
   size(500, 500);
   background(0);
   game = new Game(wide, high);
+  ishape = new IShape(x,y);
 }
 
 void draw() {
-  delay(100);
+  delay(1000);
   game.displayBoard();
-  fill(204, 102, 0);
-  rect(x * sizeCell, y * sizeCell, sizeCell, sizeCell);
-  if(y < high - 1 && game.Board[x][y + 1] == 0)
+  //fill(204, 102, 0);
+  //rect(x * sizeCell, y * sizeCell, sizeCell, sizeCell);
+  ishape.paint();
+    ishape.print();
+    if(y < high - 1 && game.Board[x][y + 1] == 0) {
     y++;
+    ishape.move (y);
+  }
   else {
     game.Board[x][y] = 1;
     boolean isReady = game.isReady(y);
