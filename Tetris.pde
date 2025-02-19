@@ -20,11 +20,11 @@ void draw() {
   //fill(204, 102, 0);
   //rect(x * sizeCell, y * sizeCell, sizeCell, sizeCell);
   ishape.paint();
-    ishape.print();
+//    ishape.print();
  // if(y < high - 1 && game.Board[x][y + 1] == 0) {
     if (ishape.validate(game.Board)) {
     y++;
-    ishape.move (y);
+    ishape.moveY ();
   }
   else {
  //   game.Board[x][y] = 1;
@@ -49,22 +49,27 @@ void draw() {
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == LEFT) {
-      if(x > 0)
+      if(ishape.validateX()) {
         x--;
+        ishape.moveLeftX();
+      }
     } else if (keyCode == RIGHT) {
-      if(x < wide - 1)
+      if(ishape.validateX()) {
         x++;
+        ishape.moveRightX();
+      }
     } else if (keyCode == UP) {
+      print(movement);
       if (movement == 1) {
-        ishape.movement2();
+        ishape.movement1();
       }
       else if (movement == 2) {
-      ishape.movement3();
+      ishape.movement2();
       }
       else if (movement == 3) {
-      ishape.movement4();
+      ishape.movement3();
       } else {
-      ishape.movement1();
+      ishape.movement4();
       movement = 0;
     }
     movement = movement + 1;
